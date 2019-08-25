@@ -4,6 +4,8 @@ package _01_Custom_ArrayList;
 
 public class ArrayList <T>{
 	
+	ArrayList<T> list = new ArrayList<T>();
+	
 	public ArrayList() {
 	}
 	
@@ -13,7 +15,7 @@ public class ArrayList <T>{
 	}
 	
 	public void add(T val) {
-		
+		list.add(val);
 	}
 	
 	public void insert(int loc, T val) throws IndexOutOfBoundsException {
@@ -21,15 +23,24 @@ public class ArrayList <T>{
 	}
 	
 	public void set(int loc, T val) throws IndexOutOfBoundsException {
-		
+		list.set(loc, val);
 	}
 	
 	public void remove(int loc) throws IndexOutOfBoundsException {
-		
+		list.remove(loc);
 	}
 	
 	public boolean contains(T val) {
 		
-		return false;
+		if(list.contains(val)) {
+			return true;
+		}else {
+			return false;
+		}
+		
+	}
+
+	public void size(T ArrayList) {
+		
 	}
 }
