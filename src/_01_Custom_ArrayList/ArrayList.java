@@ -4,43 +4,85 @@ package _01_Custom_ArrayList;
 
 public class ArrayList <T>{
 	
-	ArrayList<T> list = new ArrayList<T>();
+	T[] array;
 	
 	public ArrayList() {
+		
+		array = (T[])new Object[0];
+		
 	}
 	
 	public T get(int loc) throws IndexOutOfBoundsException {
 		
-		return null;
+		return array[loc];
+		
 	}
 	
 	public void add(T val) {
-		list.add(val);
+		
+		int len = array.length;
+		T[] newArr = (T[])new Object[len + 1];
+		
+		for(int i = 0; i < len; i++) {
+			newArr[i] = array[i];
+		}
+		
+		int newLen = newArr.length - 1;
+		newArr[newLen] = val;
+		
+		array = newArr;
+		
 	}
 	
 	public void insert(int loc, T val) throws IndexOutOfBoundsException {
 		
+		int len = array.length;
+		T[] newArr = (T[])new Object[len + 1];
+		
+		for(int i = 0; i < loc; i++) {
+			newArr[i] = array[i];
+		}
+		
+		newArr[loc] = val;
+		
+		for(int k = loc + 1; k < len; k++) {
+			newArr[k] = array[k];
+		}
+		
+		array = newArr;
+		
 	}
 	
 	public void set(int loc, T val) throws IndexOutOfBoundsException {
-		list.set(loc, val);
+		array[loc] = val;
 	}
 	
 	public void remove(int loc) throws IndexOutOfBoundsException {
-		list.remove(loc);
+	
+		T[] newArr = (T[])new Object[array.length];
+		int spot = loc;
+		for(int i = 0; i < loc; i++) {
+			newArr[i] = array[i];
+		}
+		
+		for(int k = spot; k < array.length; k++) {
+			newArr[k] = array[k];
+		}
+		
+		array = newArr;
+		
 	}
 	
 	public boolean contains(T val) {
-		
-		if(list.contains(val)) {
-			return true;
-		}else {
-			return false;
+		for(int i = 0; i < array.length; i++) {
+			if(array[i] == val) {
+				return true;
+			}
 		}
-		
+		return false;
 	}
 
-	public void size(T ArrayList) {
-		
+	public int size() {
+		return array.length;
 	}
 }
